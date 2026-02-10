@@ -42,20 +42,20 @@ Ogni documento contiene:
 
 AVVIO DELL'APPLICAZIONE
 1. Clonare il repository
-git clone https://github.com/ftalanas/elai-high-perf-api
-cd elai-high-perf-api
+- git clone https://github.com/ftalanas/elai-high-perf-api
+- cd elai-high-perf-api
 2. Creare e attivare un virtual environment
-python -m venv .venv
-source .venv/bin/activate -> Linux/Mac
-source .venv\Scripts\activate -> Windows
+- python -m venv .venv
+- source .venv/bin/activate -> Linux/Mac
+- source .venv\Scripts\activate -> Windows
 3. Installare le dipendenze
-pip install -r requirements.txt
+- pip install -r requirements.txt
 4. Avviare MongoDB tramite Docker
-docker run -d -p 27017:27017 --name mongo mongo:6
+- docker run -d -p 27017:27017 --name mongo mongo:6
 5. Avviare l’API
-uvicorn app.main:app --reload
+- uvicorn app.main:app --reload
 L’API sarà disponibile su:
-http://127.0.0.1:8000
+- http://127.0.0.1:8000
 
 NOTE DI SVILUPPO
 Durante lo sviluppo, le porte standard risultavano già occupate.
