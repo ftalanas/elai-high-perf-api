@@ -2,12 +2,14 @@ from pydantic import BaseModel, Field
 from typing import List, Union, Literal, Optional
 
 
+# Input data
 class PredictItem(BaseModel):
     nome: Optional[str] = None
     eta: int = Field(..., ge=0)
     cliente_attivo: Optional[str] = None  # "SI"/"NO"/None/altro
 
 
+# Output Data
 class PredictOut(BaseModel):
     probability: float
     label: Literal["OK", "NO_ACQUISTO"]

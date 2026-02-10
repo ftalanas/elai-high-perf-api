@@ -3,10 +3,12 @@ from typing import List, Tuple
 from .schemas import PredictItem
 
 
+# Trasforma in valore numerico Cliente Attivo
 def binarize_cliente_attivo(v: str | None) -> int:
     return 1 if (v is not None and v == "SI") else 0
 
 
+# Creazione matrice
 def make_features(items: List[PredictItem]) -> np.ndarray:
     # Drop "nome"
     # eta pass-through

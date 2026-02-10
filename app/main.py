@@ -15,17 +15,20 @@ THRESHOLD = float(os.getenv("THRESHOLD", "0.10"))
 app = FastAPI(title="ELAI High-Perf Predict API")
 
 
+# Carico modello all'avvio
 @app.on_event("startup")
 def startup():
     # carica modello una sola volta
     app.state.model = load_model(MODEL_PATH)
 
 
+# Definizione GET
 @app.get("/health")
 def health():
     return {"status": "ok"}
 
 
+# Definizione POST
 @app.post("/predict")
 async def predict(body: PredictBody):
     try:
@@ -41,7 +44,7 @@ async def predict(body: PredictBody):
             raise HTTPException(status_code=400, detail="Empty batch not allowed")
         if len(items) > 1000:
             raise HTTPException(status_code=400, detail="Batch size > 1000 not allowed")
-
+        # Preprocessing dei dati
         X = make_features(items)
 
         model = app.state.model
@@ -57,7 +60,6 @@ async def predict(body: PredictBody):
         response = outputs[0] if mode == "single" else outputs
 
         # salvataggio 1-write per chiamata
-        # --- Mongo-friendly serialization ---
         if mode == "single":
             input_data = items[0].model_dump()
         else:
