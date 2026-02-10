@@ -54,8 +54,7 @@ AVVIO DELL'APPLICAZIONE
 - docker run -d -p 27017:27017 --name mongo mongo:6
 5. Avviare l’API
 - uvicorn app.main:app --reload
-L’API sarà disponibile su:
-- http://127.0.0.1:8000
+- L’API sarà disponibile su -> http://127.0.0.1:8000
 
 NOTE DI SVILUPPO
 Durante lo sviluppo, le porte standard risultavano già occupate.
