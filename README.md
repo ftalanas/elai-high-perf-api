@@ -46,9 +46,8 @@ git clone https://github.com/ftalanas/elai-high-perf-api
 cd elai-high-perf-api
 2. Creare e attivare un virtual environment
 python -m venv .venv
-source .venv/bin/activate  # Linux/Mac
-# oppure
-.venv\Scripts\activate     # Windows
+source .venv/bin/activate -> Linux/Mac
+source .venv\Scripts\activate -> Windows
 3. Installare le dipendenze
 pip install -r requirements.txt
 4. Avviare MongoDB tramite Docker
