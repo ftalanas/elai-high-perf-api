@@ -50,11 +50,16 @@ AVVIO DELL'APPLICAZIONE
 - source .venv\Scripts\activate -> Windows
 3. Installare le dipendenze
 - pip install -r requirements.txt
-4. Avviare MongoDB tramite Docker
-- docker run -d -p 27017:27017 --name mongo mongo:6
-5. Avviare l’API
-- uvicorn app.main:app --reload
+4. Avviare servizi (API + MongoDB)
+- docker compose up --build
+5. Avviare l’API manualmente
+- uvicorn app.main:app --reload --port 8000
 - L’API sarà disponibile su -> http://127.0.0.1:8000
+6. Accedere alla shell MongoDB
+- docker exec -it elai_mongo mongosh
+7. Verifica documenti salvati
+- use elai
+- db.predictions.find().sort({ timestamp: -1 }).limit(5)
 
 NOTE DI SVILUPPO
 Durante lo sviluppo, le porte standard risultavano già occupate.
